@@ -12,6 +12,8 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Checkbox from '@material-ui/core/Checkbox';
 import Fab from '@material-ui/core/Fab';
 import AddIcon from '@material-ui/icons/Add';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles(theme => ({
   fab: {
@@ -24,7 +26,13 @@ const useStyles = makeStyles(theme => ({
       bottom : '5%'
   },
   form : {
-    backgroundColor : '#aaa',
+    //position : "absolute",
+    margin : 0
+  },
+  actions : {
+    position : 'absolute',
+    bottom : '35%',
+    left : '45%'
   },
   text : {
     color : 'white'
@@ -42,7 +50,8 @@ export default function AddTodo() {
     const [label, setLabel] = useState('');
     const [open, setOpen] = useState(false);
 
-    const url = 'https://akashdeeps19-todoserver.glitch.me';
+    const url1 = 'https://akashdeeps19-todoserver.glitch.me';
+    const url = 'https://todo-akash.herokuapp.com';
     const addTodo = async (e)=>{
         e.preventDefault();
         const data = {
@@ -65,7 +74,8 @@ export default function AddTodo() {
         }
 
     }
-    
+    const theme = useTheme();
+    const fullScreen = useMediaQuery(theme.breakpoints.down('sm'));
 
     const postData = async(url = '', data = {})=> {
         const response = await fetch(url, {
@@ -87,6 +97,11 @@ export default function AddTodo() {
         if(e.currentTarget.id == "add"){
             addTodo(e);
         }
+        setDeadline(Date.now());
+        setReminder(true);
+        setDescription('');
+        setTitle('');
+        setReminderTime(Date.now());
         setOpen(!open);
     }
 
@@ -95,7 +110,12 @@ export default function AddTodo() {
           <Fab className = {classes.fab}color="primary" onClick={()=>setOpen(true)}>
             <AddIcon/>
           </Fab>
-          <Dialog  open={open} onClose={()=>setOpen(!open)} aria-labelledby="form-dialog-title">
+          <Dialog fullScreen = {fullScreen}
+            PaperProps={{
+              style: {
+                backgroundColor: 'beige',
+              },
+            }} className = {classes.form} open={open} onClose={()=>setOpen(!open)} aria-labelledby="form-dialog-title">
             <DialogTitle className = {classes.form} id="form-dialog-title">Todo</DialogTitle>
             <DialogContent className = {classes.form}>
               <TextField
@@ -134,7 +154,7 @@ export default function AddTodo() {
             <DateTimePicker color = 'white'  value = {reminderTime} onChange = {setReminderTime} label = "Reminder"/>
             </MuiPickersUtilsProvider>
             }
-            <TextField
+            {/* <TextField
                 autoFocus
                 margin="dense"
                 id="label"
@@ -144,9 +164,9 @@ export default function AddTodo() {
                 value = {label}
                 label = 'Label'
                 onChange = {e => setLabel(e.target.value)}
-              />
+              /> */}
             </DialogContent>
-            <DialogActions className = {classes.form}>
+            <DialogActions className = {fullScreen?classes.actions:null}>
               <Button color = 'white'id = 'cancel' onClick={e => handleClose(e)} color="primary">
                 Cancel
               </Button>

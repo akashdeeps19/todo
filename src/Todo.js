@@ -76,7 +76,8 @@ export default function Todo(props) {
         setExpanded(!expanded);
     };
     const transitionTime = 500;
-    const url = 'https://akashdeeps19-todoserver.glitch.me';
+    const url1 = 'https://akashdeeps19-todoserver.glitch.me';
+    const url = 'https://todo-akash.herokuapp.com';
     const updateTodo = async()=>{
         
         setDone(true);

@@ -6,7 +6,8 @@ export const TodoData = (props)=> {
     const [todos, setTodos] = useState([]);
     const [dones, setDones] = useState([]);
 
-    const url = 'https://akashdeeps19-todoserver.glitch.me'
+    const url1 = 'https://akashdeeps19-todoserver.glitch.me';
+    const url = 'https://todo-akash.herokuapp.com';
 
     useEffect(()=>{
         getData();
