@@ -42,6 +42,7 @@ export default function AddTodo() {
     const [label, setLabel] = useState('');
     const [open, setOpen] = useState(false);
 
+    const url = 'https://akashdeeps19-todoserver.glitch.me';
     const addTodo = async (e)=>{
         e.preventDefault();
         const data = {
@@ -55,7 +56,7 @@ export default function AddTodo() {
             label : label
         }
         try{
-            const res = await postData('http://localhost:4000/events',data);
+            const res = await postData(url+'/events',data);
             setTodo(prevTodo => [res,...prevTodo]);
             console.log(res);
         }
@@ -64,6 +65,7 @@ export default function AddTodo() {
         }
 
     }
+    
 
     const postData = async(url = '', data = {})=> {
         const response = await fetch(url, {

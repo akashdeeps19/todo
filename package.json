@@ -2,7 +2,7 @@
   "name": "todo-app",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://akashdeeps19.github.io/todo",
+  "homepage": "https://akashdeeps19.github.io/todo/",
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
     "@material-ui/core": "^4.7.2",
