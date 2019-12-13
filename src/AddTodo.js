@@ -166,7 +166,7 @@ export default function AddTodo() {
                 onChange = {e => setLabel(e.target.value)}
               /> */}
             </DialogContent>
-            <DialogActions className = {fullScreen?classes.actions:null}>
+            <DialogActions >
               <Button color = 'white'id = 'cancel' onClick={e => handleClose(e)} color="primary">
                 Cancel
               </Button>
