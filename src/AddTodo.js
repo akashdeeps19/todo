@@ -130,7 +130,7 @@ export default function AddTodo() {
                 onChange = {e => setTitle(e.target.value)}
               />
               <TextField
-                autoFocus
+                // autoFocus
                 margin="dense"
                 id="description"
                 type="text"
