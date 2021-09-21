@@ -50,8 +50,8 @@ export default function AddTodo() {
     const [label, setLabel] = useState('');
     const [open, setOpen] = useState(false);
 
-    const url1 = 'https://akashdeeps19-todoserver.glitch.me';
-    const url = 'https://todo-akash.herokuapp.com';
+    const url = 'https://akashdeeps19-todoserver.glitch.me';
+    const url1 = 'http://localhost:4000'//'https://todo-akash.herokuapp.com';
     const addTodo = async (e)=>{
         e.preventDefault();
         const data = {
